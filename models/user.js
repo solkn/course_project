@@ -1,38 +1,58 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const Course = require('./course');
+const Course = require('./course'); // Assuming Course model exists and is correctly defined
 
 const User = sequelize.define('User', {
   user_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    allowNull: false
   },
   username: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   password_hash: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(255),
     allowNull: false
   },
   email: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  phone_number: DataTypes.STRING,
-  your_city: DataTypes.STRING,
-  course_taken: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Course,
-      key: 'course_id'
+    type: DataTypes.STRING(100),
+    allowNull: false,
+    validate: {
+      isEmail: true
     }
   },
-  progress_percentage: DataTypes.INTEGER
-}, { timestamps: true });
+  phone_number: {
+    type: DataTypes.STRING(20),
+    allowNull: true // Optional field
+  },
+  your_city: {
+    type: DataTypes.STRING(100),
+    allowNull: true // Optional field
+  },
+  course_taken: {
+    type: DataTypes.INTEGER,
+    allowNull: true, // User may not be enrolled in a course at the time
+    references: {
+      model: Course, // Refers to the Course model
+      key: 'course_id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL' // If the course is deleted, set course_taken to NULL
+  },
+  progress_percentage: {
+    type: DataTypes.INTEGER,
+    allowNull: true, // May not have any progress initially
+    defaultValue: 0 // Default value for progress is 0%
+  }
+}, {
+  tableName: 'users',
+  timestamps: true // Automatically adds createdAt and updatedAt fields
+});
 
-Course.hasMany(User, { foreignKey: 'course_taken' });
+// Establishing the association with the Course model
 User.belongsTo(Course, { foreignKey: 'course_taken' });
 
 module.exports = User;

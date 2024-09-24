@@ -45,6 +45,6 @@ const Lesson = sequelize.define('Lesson', {
 });
 
 // Establish association between Lesson and Course models
-Lesson.belongsTo(Course, { foreignKey: 'course_id', as: 'course' });
+Lesson.belongsTo(Course, { foreignKey: 'course_id' });
 
 module.exports = Lesson;
