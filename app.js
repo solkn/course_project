@@ -6,6 +6,9 @@ const lessonRoutes = require('./routes/lessonRoute');
 const lessonContentRoutes = require('./routes/lessonContentRoute');
 const userRoutes = require('./routes/userRoute');
 const progressRoutes = require('./routes/progressRoute');
+const authRoutes = require('./routes/authRoutes');
+require('dotenv').config(); // To load environment variables
+
 
 // Create the Express app
 const app = express();
@@ -14,6 +17,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
+app.use('/api/auth', authRoutes);
+
 app.use('/api/courses', courseRoutes);
 app.use('/api/lessons', lessonRoutes);
 app.use('/api/lesson-content', lessonContentRoutes);
@@ -25,7 +30,10 @@ sequelize.sync({ force: false }).then(() => {
   console.log('Database synced successfully');
 });
 
+
+const PORT = process.env.PORT || 80;
+
 // Start the server
-app.listen(80, () => {
+app.listen(PORT, () => {
   console.log('Server is running');
 });
