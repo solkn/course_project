@@ -7,9 +7,9 @@ router.post('/course/:id', lessonController.addLesson);
 
 router.get('/course/:id/', lessonController.getLessonsByCourse);
 
-router.put('/lessons/:id', lessonController.updateLesson);
+router.put('/:id', lessonController.updateLesson);
 
-router.delete('/lessons/:id', lessonController.deleteLesson);
+router.delete('/:id', lessonController.deleteLesson);
 
 router.put('/lessons/:id/change-course', lessonController.changeCourse);
 
