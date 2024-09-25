@@ -25,10 +25,15 @@ app.use('/api/lesson-content', lessonContentRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/progress', progressRoutes);
 
-// Sync with the database
-sequelize.sync({ force: false }).then(() => {
-  console.log('Database synced successfully');
-});
+
+// Sync database models
+sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('Database synced successfully.');
+  })
+  .catch(err => {
+    console.error('Error syncing database:', err);
+  });
 
 
 const PORT = process.env.PORT || 80;
