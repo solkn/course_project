@@ -6,7 +6,7 @@ const lessonRoutes = require('./routes/lessonRoute');
 const lessonContentRoutes = require('./routes/lessonContentRoute');
 const userRoutes = require('./routes/userRoute');
 const progressRoutes = require('./routes/progressRoute');
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoute');
 require('dotenv').config(); // To load environment variables
 
 
