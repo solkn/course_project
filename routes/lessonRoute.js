@@ -3,9 +3,9 @@ const lessonController = require('../controllers/lessonController');
 
 const router = express.Router();
 
-router.post('/course/:id/lessons', lessonController.addLesson);
+router.post('/course/:id', lessonController.addLesson);
 
-router.get('/course/:id/lessons', lessonController.getLessonsByCourse);
+router.get('/course/:id/', lessonController.getLessonsByCourse);
 
 router.put('/lessons/:id', lessonController.updateLesson);
 

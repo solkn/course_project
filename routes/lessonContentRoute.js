@@ -3,12 +3,12 @@ const lessonContentController = require('../controllers/lessonContentController'
 
 const router = express.Router();
 
-router.get('/lessons/:id/content', lessonContentController.getContentByLesson);
+router.get('/lessons/:id', lessonContentController.getContentByLesson);
 
-router.post('/lessons/:id/content', lessonContentController.addContentToLesson);
+router.post('/lessons/:id', lessonContentController.addContentToLesson);
 
-router.put('/content/:id', lessonContentController.updateContent);
+router.put('/:id', lessonContentController.updateContent);
 
-router.delete('/content/:id', lessonContentController.deleteContent);
+router.delete('/:id', lessonContentController.deleteContent);
 
 module.exports = router;
