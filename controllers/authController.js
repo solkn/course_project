@@ -14,7 +14,7 @@ const generateToken = (user) => {
 
 // Register a new user
 exports.register = async (req, res) => {
-  const { username, password, phone_number, your_city } = req.body;
+  const { username, password,email, phone_number, your_city, course_taken, progress_percentage } = req.body;
 
   try {
     // Check if the user already exists
@@ -30,8 +30,11 @@ exports.register = async (req, res) => {
     const newUser = await User.create({
       username,
       password_hash: hashedPassword,
+      email,
       phone_number,
-      your_city
+      your_city,
+      course_taken,
+      progress_percentage
     });
 
     // Generate token
