@@ -26,6 +26,6 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 // Start the server
-app.listen(8000, () => {
+app.listen(80, () => {
   console.log('Server is running');
 });
