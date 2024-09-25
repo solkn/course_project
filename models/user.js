@@ -49,7 +49,7 @@ const User = sequelize.define('User', {
   }
 }, {
   tableName: 'users',
-  timestamps: true // Automatically adds createdAt and updatedAt fields
+  timestamps: false // Automatically adds createdAt and updatedAt fields
 });
 
 // Establishing the association with the Course model

@@ -21,6 +21,6 @@ const Course = sequelize.define('Course', {
   job_desc: DataTypes.TEXT,
   companies_hiring: DataTypes.TEXT,
   jobs_open: DataTypes.INTEGER
-}, { timestamps: true });
+}, { timestamps: false });
 
 module.exports = Course;

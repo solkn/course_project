@@ -41,7 +41,7 @@ const Lesson = sequelize.define('Lesson', {
   }
 }, {
   tableName: 'lessons', // Explicit table name
-  timestamps: true // Adds createdAt and updatedAt fields automatically
+  timestamps: false // Adds createdAt and updatedAt fields automatically
 });
 
 // Establish association between Lesson and Course models

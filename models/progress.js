@@ -24,7 +24,7 @@ const Progress = sequelize.define('Progress', {
     }
   },
   progress_percentage: DataTypes.INTEGER
-}, { timestamps: true });
+}, { timestamps: false });
 
 User.hasMany(Progress, { foreignKey: 'user_id' });
 Lesson.hasMany(Progress, { foreignKey: 'lesson_id' });
