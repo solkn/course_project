@@ -36,7 +36,7 @@ sequelize.sync({ alter: true })
   });
 
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 80000;
 
 // Start the server
 app.listen(PORT, () => {
